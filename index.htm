@@ -1,74 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18399800557"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'AW-18399800557');
-
     gtag('config', 'G-FMMYR5YS5D');
   </script>
-  <title>Galp&atilde;o Santa Maria Norte com 232 metros quadrados</title>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Galpão Santa Maria Norte com 232 metros quadrados</title>
+
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body class="w3-content" style="max-width:1200px">
-
-  <br />
-  <br />
-  <!-- First Grid: Logo & About -->
-  <!-- CABEÇALHO HERO COM BOTÃO WHATSAPP INTEGRADO -->
-  <div class="topo-galpao">
-    <div class="topo-container">
-
-      <!-- Bloco de Informações do Galpão -->
-      <div class="topo-info">
-        <div class="col-esquerda">
-          <h1 class="titulo-principal">Santa Maria Norte</h1>
-          <p class="subtitulo">Vende-se galpão 232 m²</p>
-        </div>
-
-        <div class="col-direita">
-          <p class="destaque-item">Galpão dividido em 3 salas de aprox. 70 m²</p>
-          <p class="destaque-item">Ao lado da BR-040</p>
-          <div class="preco-tag">R$ 380.000,00</div>
-        </div>
-      </div>
-
-      <!-- Linha Divisória Sutil -->
-      <hr class="topo-divisor">
-
-      <!-- Bloco de Contato Rápido no Topo -->
-      <div class="topo-contato">
-        <a href="https://api.whatsapp.com/send?phone=5561982283804&text=Estou%20interessado%20em%20visitar%20o%20galpao%20situado%20na%20AC319,%20Santa%20Maria"
-          target="_blank" rel="noopener noreferrer" class="btn-whatsapp-topo" onclick="gtag('event', 'click_whatsapp', {
-           'event_category': 'Contato',
-           'event_label': 'Botao WhatsApp Topo'
-         });">
-          <img src="./thumbnails/whatsapp.png" alt="WhatsApp" class="icone-zap">
-          <span class="zap-texto">Conversar no WhatsApp: <b>(61) 98228-3804</b></span>
-        </a>
-        <span class="aviso-somente-zap">⚠️ Atendimento exclusivo via WhatsApp (não atendo chamadas)</span>
-      </div>
-
-    </div>
-  </div>
 
   <style>
+    /* ================= GERAL E ESTRUTURA ================= */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1f2937;
+    }
+
+    .galeria-img {
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      margin-bottom: 16px;
+    }
+
+    .galeria-img:hover {
+      opacity: 0.92;
+      transform: scale(1.01);
+    }
+
+    .secao-titulo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #4b5563;
+      margin: 24px 0 12px 0;
+      padding-left: 8px;
+    }
+
+    /* ================= CABEÇALHO HERO ================= */
     .topo-galpao {
       background-color: #fffde7;
       border-bottom: 2px solid #fff59d;
       padding: 28px 20px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #1f2937;
+      margin-bottom: 30px;
     }
 
     .topo-container {
@@ -84,11 +68,9 @@
       gap: 20px;
     }
 
-    /* Lado Esquerdo - Título e Subtítulo Maiores */
     .col-esquerda .titulo-principal {
       margin: 0;
       font-size: 2.8rem;
-      /* Aumentado */
       font-weight: 900;
       letter-spacing: -0.8px;
       color: #111827;
@@ -98,12 +80,10 @@
     .col-esquerda .subtitulo {
       margin: 8px 0 0 0;
       font-size: 1.55rem;
-      /* Aumentado */
       font-weight: 600;
       color: #4b5563;
     }
 
-    /* Lado Direito - Destaques e Preço em Evidência */
     .col-direita {
       text-align: right;
     }
@@ -111,7 +91,6 @@
     .col-direita .destaque-item {
       margin: 4px 0;
       font-size: 1.25rem;
-      /* Aumentado */
       font-weight: 500;
       color: #1f2937;
     }
@@ -119,7 +98,6 @@
     .col-direita .preco-tag {
       margin-top: 10px;
       font-size: 2.3rem;
-      /* Aumentado */
       font-weight: 900;
       color: #000;
       letter-spacing: -0.5px;
@@ -132,7 +110,8 @@
       margin: 24px 0 20px 0;
     }
 
-    .topo-contato {
+    /* ================= BOTÕES WHATSAPP ================= */
+    .bloco-contato {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -140,7 +119,7 @@
       gap: 10px;
     }
 
-    .btn-whatsapp-topo {
+    .btn-whatsapp {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -153,7 +132,7 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
     }
 
-    .btn-whatsapp-topo:hover {
+    .btn-whatsapp:hover {
       background-color: #20ba5a;
       transform: translateY(-2px);
       box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
@@ -181,7 +160,92 @@
       font-weight: 600;
     }
 
-    /* Responsividade para Smartphones */
+    /* ================= SEÇÃO LOCALIZAÇÃO ================= */
+    .secao-localizacao {
+      margin-top: 40px;
+      padding: 0 16px;
+    }
+
+    .container-localizacao {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .box-endereco {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .link-endereco-card {
+      display: block;
+      background-color: #fffde7;
+      border: 1px solid #fff59d;
+      padding: 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #111827;
+      font-size: 1.4rem;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .link-endereco-card:hover {
+      background-color: #fff9c4;
+      transform: scale(1.02);
+    }
+
+    .box-mapa {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .mapa-legenda {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #6b7280;
+    }
+
+    /* ================= RODAPÉ ================= */
+    .rodape-galpao {
+      background-color: #fffde7;
+      border-top: 2px solid #fff59d;
+      padding: 36px 20px 24px 20px;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .rodape-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .rodape-titulo {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #111827;
+      letter-spacing: -0.5px;
+    }
+
+    .rodape-subtitulo {
+      margin: 8px 0 20px 0;
+      font-size: 1.15rem;
+      color: #4b5563;
+    }
+
+    .rodape-local {
+      margin-top: 28px;
+      font-size: 0.95rem;
+      color: #6b7280;
+      border-top: 1px solid #e2dfb8;
+      padding-top: 16px;
+    }
+
+    /* ================= RESPONSIVO SMARTPHONE ================= */
     @media (max-width: 768px) {
       .topo-info {
         flex-direction: column;
@@ -210,7 +274,7 @@
         font-size: 1.9rem;
       }
 
-      .btn-whatsapp-topo {
+      .btn-whatsapp {
         width: 100%;
         box-sizing: border-box;
         padding: 14px 16px;
@@ -219,192 +283,219 @@
       .zap-texto {
         font-size: 1.05rem;
       }
+
+      .rodape-titulo {
+        font-size: 1.45rem;
+      }
+
+      .rodape-subtitulo {
+        font-size: 1rem;
+      }
+
+      .link-endereco-card {
+        font-size: 1.15rem;
+      }
     }
   </style>
+</head>
 
+<body class="w3-content" style="max-width:1200px">
 
-  <br />
-  <br />
-  <br />
-  <!-- Second Grid: Resent -->
+  <!-- CABEÇALHO HERO COM BOTÃO WHATSAPP -->
+  <header class="topo-galpao">
+    <div class="topo-container">
 
-  <div class="w3-row">
-    <div class="w3-container">
-      <img src="./thumbnails/vista_externa1.jpg" style="width:100%"
-        onclick="window.open('./fotos/vista_externa1.jpg');return false;">
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/vista_externa2.jpg" style="width:100%"
-        onclick="window.open('./fotos/vista_externa2.jpg');return false;">
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/vista_externa3.jpg" style="width:100%"
-        onclick="window.open('./fotos/vista_externa3.jpg');return false;">
-    </div>
-  </div>
-  <br />
-  <br />
-  <div class="w3-row">
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala1_1.jpg" style="width:100%" onclick="window.open('./fotos/sala1_1.jpg');return false;">
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala1_2.jpg" style="width:100%" onclick="window.open('./fotos/sala1_2.jpg');return false;">
-    </div>
-    <div class="w3-container">
-      <p class="w3-xlarge w3-text-grey">
-        Varanda:</p>
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/varanda1.jpg" style="width:100%"
-        onclick="window.open('./fotos/varanda1.jpg');return false;">
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/varanda4.jpg" style="width:100%"
-        onclick="window.open('./fotos/varanda4.jpg');return false;">
-    </div>
-    </br>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/varanda2.jpg" style="width:100%"
-        onclick="window.open('./fotos/varanda2.jpg');return false;">
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/varanda3.jpg" style="width:100%"
-        onclick="window.open('./fotos/varanda3.jpg');return false;">
-    </div>
-    <div class="w3-container">
-      <p class="w3-xlarge w3-text-grey">
-        Copa sala 1:</p>
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala1_copa1.jpg" style="width:100%"
-        onclick="window.open('./fotos/sala1_copa1.jpg');return false;">
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala1_copa2.jpg" style="width:100%"
-        onclick="window.open('./fotos/sala1_copa2.jpg');return false;">
-    </div>
-    <div class="w3-container">
-      <p class="w3-xlarge w3-text-grey">
-        Banheiro sala 1:</p>
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala1_banheiro1.jpg" style="width:100%"
-        onclick="window.open('./fotos/sala1_banheiro1.jpg');return false;">
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala1_banheiro2.jpg" style="width:100%"
-        onclick="window.open('./fotos/sala1_banheiro2.jpg');return false;">
-    </div>
-  </div>
+      <div class="topo-info">
+        <div class="col-esquerda">
+          <h1 class="titulo-principal">Santa Maria Norte</h1>
+          <p class="subtitulo">Vende-se galpão 232 m²</p>
+        </div>
 
-  </br>
-  </br>
-  </br>
+        <div class="col-direita">
+          <p class="destaque-item">Galpão dividido em 3 salas de aprox. 70 m²</p>
+          <p class="destaque-item">Ao lado da BR-040</p>
+          <div class="preco-tag">R$ 380.000,00</div>
+        </div>
+      </div>
 
-  <div class="w3-row">
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala2_1.jpg" style="width:100%" onclick="window.open('./fotos/sala2_1.jpg');return false;">
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala2_2.jpg" style="width:100%" onclick="window.open('./fotos/sala2_2.jpg');return false;">
-    </div>
-  </div>
-  </br>
-  <div class="w3-row">
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala2_3.jpg" style="width:100%" onclick="window.open('./fotos/sala2_3.jpg');return false;">
-    </div>
-  </div>
+      <hr class="topo-divisor">
 
-  </br>
-  </br>
-  </br>
-
-  <div class="w3-row">
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala3_1.jpg" style="width:100%" onclick="window.open('./fotos/sala3_1.jpg');return false;">
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala3_2.jpg" style="width:100%" onclick="window.open('./fotos/sala3_2.jpg');return false;">
-    </div>
-  </div>
-  </br>
-  <div class="w3-row">
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala3_3.jpg" style="width:100%" onclick="window.open('./fotos/sala3_3.jpg');return false;">
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala3_4.jpg" style="width:100%" onclick="window.open('./fotos/sala3_4.jpg');return false;">
-    </div>
-  </div>
-  <div class="w3-container">
-    <p class="w3-xlarge w3-text-grey">
-      Banheiro sala 3:</p>
-  </div>
-  <div class="w3-row">
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala3_banheiro1.jpg" style="width:100%"
-        onclick="window.open('./fotos/sala3_banheiro1.jpg');return false;">
-    </div>
-    <div class="w3-half w3-container">
-      <img src="./thumbnails/sala3_banheiro2.jpg" style="width:100%"
-        onclick="window.open('./fotos/sala3_banheiro2.jpg');return false;">
-    </div>
-  </div>
-
-  <br />
-  <br />
-
-
-  <div class="w3-panel">
-    <h2><b>Localiza&ccedil;&atilde;o:</b></h2>
-  </div>
-
-  <div class="w3-row">
-    <div class="w3-half w3-container" style="text-align: center;">
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <h2 style="background-color:lightgoldenrodyellow"
-        onclick="window.open('https://maps.app.goo.gl/gKse1K6fhzzCGU2f8');return false;">AC319 ADESM CJ C, 1, 72549-365
-      </h2>
+      <div class="bloco-contato">
+        <a href="https://api.whatsapp.com/send?phone=5561982283804&text=Estou%20interessado%20em%20visitar%20o%20galpao%20situado%20na%20AC319,%20Santa%20Maria"
+          target="_blank" rel="noopener noreferrer" class="btn-whatsapp" onclick="gtag('event', 'click_whatsapp', {
+            'event_category': 'Contato',
+            'event_label': 'Botao WhatsApp Topo'
+          });">
+          <img src="./thumbnails/whatsapp.png" alt="WhatsApp" class="icone-zap">
+          <span class="zap-texto">Conversar no WhatsApp: <b>(61) 98228-3804</b></span>
+        </a>
+        <span class="aviso-somente-zap">⚠️ Atendimento exclusivo via WhatsApp (não atendo chamadas)</span>
+      </div>
 
     </div>
-    <div class="w3-half w3-container">
-      <div>
-        <img src="./thumbnails/mapa_galpao.png"
-          onclick="window.open('https://maps.app.goo.gl/gKse1K6fhzzCGU2f8');return false;">
-        <h4>clique na foto acima para ver localiza&ccedil;&atilde;o no Google maps</h4>
+  </header>
+
+  <!-- GALERIA DE FOTOS -->
+  <main>
+    <!-- Fachada Externa -->
+    <div class="w3-row">
+      <div class="w3-col s12 w3-container">
+        <img src="./thumbnails/vista_externa1.jpg" alt="Vista Externa Principal" class="galeria-img"
+          onclick="window.open('./fotos/vista_externa1.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/vista_externa2.jpg" alt="Vista Externa 2" class="galeria-img"
+          onclick="window.open('./fotos/vista_externa2.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/vista_externa3.jpg" alt="Vista Externa 3" class="galeria-img"
+          onclick="window.open('./fotos/vista_externa3.jpg');">
       </div>
     </div>
-  </div>
 
+    <!-- Sala 1 -->
+    <div class="w3-row">
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala1_1.jpg" alt="Sala 1 - Foto 1" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala1_1.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala1_2.jpg" alt="Sala 1 - Foto 2" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala1_2.jpg');">
+      </div>
 
-  <br />
-  <br />
+      <div class="w3-col s12 w3-container">
+        <p class="secao-titulo">Varanda:</p>
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/varanda1.jpg" alt="Varanda 1" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/varanda1.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/varanda4.jpg" alt="Varanda 4" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/varanda4.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/varanda2.jpg" alt="Varanda 2" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/varanda2.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/varanda3.jpg" alt="Varanda 3" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/varanda3.jpg');">
+      </div>
 
-  <!-- RODAPÉ COMPLETO COM BOTÃO WHATSAPP -->
+      <div class="w3-col s12 w3-container">
+        <p class="secao-titulo">Copa sala 1:</p>
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala1_copa1.jpg" alt="Copa Sala 1 - 1" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala1_copa1.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala1_copa2.jpg" alt="Copa Sala 1 - 2" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala1_copa2.jpg');">
+      </div>
+
+      <div class="w3-col s12 w3-container">
+        <p class="secao-titulo">Banheiro sala 1:</p>
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala1_banheiro1.jpg" alt="Banheiro Sala 1 - 1" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala1_banheiro1.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala1_banheiro2.jpg" alt="Banheiro Sala 1 - 2" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala1_banheiro2.jpg');">
+      </div>
+    </div>
+
+    <!-- Sala 2 -->
+    <div class="w3-row">
+      <div class="w3-col s12 w3-container">
+        <p class="secao-titulo">Sala 2:</p>
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala2_1.jpg" alt="Sala 2 - Foto 1" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala2_1.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala2_2.jpg" alt="Sala 2 - Foto 2" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala2_2.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala2_3.jpg" alt="Sala 2 - Foto 3" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala2_3.jpg');">
+      </div>
+    </div>
+
+    <!-- Sala 3 -->
+    <div class="w3-row">
+      <div class="w3-col s12 w3-container">
+        <p class="secao-titulo">Sala 3:</p>
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala3_1.jpg" alt="Sala 3 - Foto 1" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala3_1.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala3_2.jpg" alt="Sala 3 - Foto 2" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala3_2.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala3_3.jpg" alt="Sala 3 - Foto 3" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala3_3.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala3_4.jpg" alt="Sala 3 - Foto 4" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala3_4.jpg');">
+      </div>
+
+      <div class="w3-col s12 w3-container">
+        <p class="secao-titulo">Banheiro sala 3:</p>
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala3_banheiro1.jpg" alt="Banheiro Sala 3 - 1" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala3_banheiro1.jpg');">
+      </div>
+      <div class="w3-col m6 s12 w3-container">
+        <img src="./thumbnails/sala3_banheiro2.jpg" alt="Banheiro Sala 3 - 2" class="galeria-img" loading="lazy"
+          onclick="window.open('./fotos/sala3_banheiro2.jpg');">
+      </div>
+    </div>
+
+    <!-- LOCALIZAÇÃO -->
+    <section class="secao-localizacao">
+      <h2 style="font-weight: 800; font-size: 1.8rem; margin: 0;">Localização:</h2>
+      
+      <div class="container-localizacao">
+        <div class="box-endereco">
+          <a href="https://maps.app.goo.gl/gKse1K6fhzzCGU2f8" target="_blank" rel="noopener noreferrer" class="link-endereco-card">
+            📍 AC319 ADESM CJ C, 1, 72549-365
+          </a>
+        </div>
+
+        <div class="box-mapa">
+          <a href="https://maps.app.goo.gl/gKse1K6fhzzCGU2f8" target="_blank" rel="noopener noreferrer">
+            <img src="./thumbnails/mapa_galpao.png" alt="Mapa de localização do galpão" class="galeria-img" style="margin-bottom: 4px;">
+          </a>
+          <p class="mapa-legenda">Clique na foto acima para abrir no Google Maps</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
   <footer class="rodape-galpao">
     <div class="rodape-container">
-
-      <!-- Chamada para Ação Final -->
       <h2 class="rodape-titulo">Ficou interessado? Agende uma visita</h2>
       <p class="rodape-subtitulo">Tire suas dúvidas ou combine um horário diretamente conosco.</p>
 
-      <!-- Botão de Contato -->
-      <div class="rodape-contato">
+      <div class="bloco-contato">
         <a href="https://api.whatsapp.com/send?phone=5561982283804&text=Estou%20interessado%20em%20visitar%20o%20galpao%20situado%20na%20AC319,%20Santa%20Maria"
-          target="_blank" rel="noopener noreferrer" class="btn-whatsapp-rodape" onclick="gtag('event', 'click_whatsapp', {
-           'event_category': 'Contato',
-           'event_label': 'Botao WhatsApp Rodape'
-         });">
+          target="_blank" rel="noopener noreferrer" class="btn-whatsapp" onclick="gtag('event', 'click_whatsapp', {
+            'event_category': 'Contato',
+            'event_label': 'Botao WhatsApp Rodape'
+          });">
           <img src="./thumbnails/whatsapp.png" alt="WhatsApp" class="icone-zap">
           <span class="zap-texto">Conversar no WhatsApp: <b>(61) 98228-3804</b></span>
         </a>
@@ -414,94 +505,6 @@
       <p class="rodape-local">Santa Maria Norte — Ao lado da BR-040</p>
     </div>
   </footer>
-
-  <!-- ESTILIZAÇÃO DO RODAPÉ -->
-  <style>
-    .rodape-galpao {
-      background-color: #fffde7;
-      border-top: 2px solid #fff59d;
-      padding: 36px 20px 24px 20px;
-      margin-top: 40px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      text-align: center;
-      color: #1f2937;
-    }
-
-    .rodape-container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .rodape-titulo {
-      margin: 0;
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #111827;
-      letter-spacing: -0.5px;
-    }
-
-    .rodape-subtitulo {
-      margin: 8px 0 20px 0;
-      font-size: 1.15rem;
-      color: #4b5563;
-    }
-
-    .rodape-contato {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .btn-whatsapp-rodape {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #25d366;
-      color: #ffffff !important;
-      text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 50px;
-      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-    }
-
-    .btn-whatsapp-rodape:hover {
-      background-color: #20ba5a;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
-    }
-
-    .rodape-local {
-      margin-top: 28px;
-      font-size: 0.95rem;
-      color: #6b7280;
-      border-top: 1px solid #e2dfb8;
-      padding-top: 16px;
-    }
-
-    @media (max-width: 768px) {
-      .rodape-titulo {
-        font-size: 1.45rem;
-      }
-
-      .rodape-subtitulo {
-        font-size: 1rem;
-      }
-
-      .btn-whatsapp-rodape {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 14px 16px;
-      }
-    }
-  </style>
-
-  <br />
-  <br />
-  <br />
-  <br />
 
 </body>
 
