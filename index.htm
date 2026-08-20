@@ -30,6 +30,8 @@
       color: #1f2937;
       margin: 0;
       padding: 24px 0;
+      font-size: 1.55rem;
+      line-height: 1.5;
     }
 
     .conteudo-principal {
@@ -78,8 +80,8 @@
 
     .col-direita .destaque-item {
       margin: 4px 0;
-      font-size: 1.25rem;
-      font-weight: 500;
+      font-size: 1.55rem;
+      font-weight: normal;
       color: #1f2937;
     }
 
@@ -96,6 +98,43 @@
       height: 1px;
       background-color: #e2dfb8;
       margin: 24px 0 20px 0;
+    }
+
+    /* ================= SEÇÃO DESCRITIVA ================= */
+    .secao-descricao {
+      margin: 40px 0;
+      color: #1f2937;
+      font-size: 1.55rem;
+      line-height: 1.6;
+    }
+
+    .secao-descricao p {
+      margin: 0 0 20px 0;
+    }
+
+    .secao-descricao h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #111827;
+      margin: 32px 0 12px 0;
+    }
+
+    .secao-descricao ul {
+      margin: 0 0 24px 0;
+      padding-left: 28px;
+      list-style-type: disc;
+    }
+
+    .secao-descricao li {
+      margin-bottom: 10px;
+    }
+
+    .secao-descricao .chamada-final {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #111827;
+      margin-top: 32px;
+      margin-bottom: 0;
     }
 
     /* ================= BOTÕES WHATSAPP ================= */
@@ -134,7 +173,7 @@
     }
 
     .zap-texto {
-      font-size: 1.15rem;
+      font-size: 1.55rem;
       letter-spacing: 0.2px;
     }
 
@@ -143,9 +182,10 @@
     }
 
     .aviso-somente-zap {
-      font-size: 0.95rem;
+      font-size: 1.55rem;
       color: #b45309;
       font-weight: 600;
+      text-align: center;
     }
 
     /* ================= SEPARADORES AMARELOS ================= */
@@ -159,7 +199,7 @@
       margin-top: 48px;
       margin-bottom: 20px;
       text-align: center;
-      font-size: 1.4rem;
+      font-size: 1.65rem;
       font-weight: 800;
       color: #111827;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
@@ -217,7 +257,7 @@
       border-radius: 8px;
       text-decoration: none;
       color: #111827;
-      font-size: 1.35rem;
+      font-size: 1.55rem;
       font-weight: 700;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
       transition: transform 0.2s ease, background-color 0.2s ease;
@@ -235,7 +275,7 @@
 
     .mapa-legenda {
       margin-top: 8px;
-      font-size: 0.95rem;
+      font-size: 1.55rem;
       color: #6b7280;
     }
 
@@ -252,7 +292,7 @@
 
     .rodape-titulo {
       margin: 0;
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 800;
       color: #111827;
       letter-spacing: -0.5px;
@@ -260,13 +300,13 @@
 
     .rodape-subtitulo {
       margin: 8px 0 20px 0;
-      font-size: 1.15rem;
+      font-size: 1.55rem;
       color: #4b5563;
     }
 
     .rodape-local {
       margin-top: 28px;
-      font-size: 0.95rem;
+      font-size: 1.55rem;
       color: #6b7280;
       border-top: 1px solid #e2dfb8;
       padding-top: 16px;
@@ -276,6 +316,7 @@
     @media (max-width: 768px) {
       body {
         padding: 12px 0;
+        font-size: 1.25rem;
       }
 
       .topo-galpao {
@@ -299,15 +340,28 @@
       }
 
       .col-esquerda .subtitulo {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
       }
 
       .col-direita .destaque-item {
-        font-size: 1.1rem;
+        font-size: 1.25rem;
       }
 
       .col-direita .preco-tag {
         font-size: 1.9rem;
+      }
+
+      .secao-descricao {
+        font-size: 1.25rem;
+        margin: 28px 0;
+      }
+
+      .secao-descricao h2 {
+        font-size: 1.45rem;
+      }
+
+      .secao-descricao .chamada-final {
+        font-size: 1.35rem;
       }
 
       .btn-whatsapp {
@@ -317,11 +371,15 @@
       }
 
       .zap-texto {
-        font-size: 1.05rem;
+        font-size: 1.15rem;
+      }
+
+      .aviso-somente-zap {
+        font-size: 1.1rem;
       }
 
       .separador-amarelo {
-        font-size: 1.15rem;
+        font-size: 1.3rem;
         padding: 12px 14px;
         margin-top: 36px;
       }
@@ -332,8 +390,12 @@
       }
 
       .link-endereco-card {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         padding: 16px;
+      }
+
+      .mapa-legenda {
+        font-size: 1.15rem;
       }
 
       .rodape-galpao {
@@ -342,11 +404,15 @@
       }
 
       .rodape-titulo {
-        font-size: 1.45rem;
+        font-size: 1.55rem;
       }
 
       .rodape-subtitulo {
-        font-size: 1rem;
+        font-size: 1.25rem;
+      }
+
+      .rodape-local {
+        font-size: 1.15rem;
       }
     }
   </style>
@@ -385,6 +451,42 @@
         <span class="aviso-somente-zap">⚠️ Atendimento exclusivo via WhatsApp (não atendo chamadas)</span>
       </div>
     </header>
+
+    <!-- TEXTO DESCRITIVO E INFORMAÇÕES DETALHADAS -->
+    <section class="secao-descricao">
+      <p>Oportunidade imperdível em Santa Maria Norte (DF)! Galpão comercial com 232 m² de área construída, com excelente padrão de aproveitamento de espaço, pronto para receber sua empresa ou gerar renda imediata de locação.</p>
+      
+      <p>Imóvel já estrategicamente modulado em 3 amplas salas independentes (aprox. 70 m² cada), oferecendo grande flexibilidade de uso.</p>
+
+      <h2>Distribuição do Imóvel:</h2>
+      <ul>
+        <li><b>Área Total:</b> 232 m²</li>
+        <li><b>Sala 1 (~70 m²):</b> Espaço amplo com banheiro privativo e copa anexa (ideal para recepção principal, diretoria ou refeitório).</li>
+        <li><b>Sala 2 (~70 m²):</b> Vão livre versátil para estoque, produção, escritório ou showroom.</li>
+        <li><b>Sala 3 (~70 m²):</b> Espaço amplo com banheiro privativo.</li>
+        <li><b>Total:</b> 3 salas amplas, 2 banheiros e 1 copa.</li>
+      </ul>
+
+      <h2>Diferenciais e Potencial:</h2>
+      <ul>
+        <li><b>Para o seu Negócio:</b> Perfeito para distribuidoras, confecções, gráficas, oficinas, depósitos, clínicas, academias ou escritórios corporativos.</li>
+        <li><b>Para Investidores:</b> Estrutura pronta para locação fracionada (alugue 3 módulos separados e aumente sua rentabilidade mensal).</li>
+        <li><b>Excelente Logística:</b> Localização estratégica em Santa Maria Norte, com saída rápida para as principais vias e rodovias da região (BR-040 / DF-290).</li>
+      </ul>
+
+      <h2>Localização:</h2>
+      <ul>
+        <li>Quadra AC 319, Conjunto C, Lote 1 - Santa Maria Norte, Brasília - DF (CEP: 72549-365).</li>
+      </ul>
+
+      <h2>Condições e Negociação:</h2>
+      <ul>
+        <li>Imóvel escriturado e desimpedido.</li>
+        <li>Aceita financiamento imobiliário comercial.</li>
+      </ul>
+
+      <p class="chamada-final">Agende uma visita e venha conhecer o potencial deste imóvel!</p>
+    </section>
 
     <!-- GALERIA DE FOTOS -->
     <main>
