@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18399800557"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18399800557');
+
+  gtag('config', 'G-FMMYR5YS5D');
+</script>
+  <title>Galp&atilde;o Santa Maria Norte com 232 metros quadrados</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="w3-content" style="max-width:1200px">
+
+  <br />
+  <br />
+  <!-- First Grid: Logo & About -->
+  <div class="w3-row">
+    <div class="w3-half w3-container">
+      <br/>
+      <br/>
+      <h1 class="w3-jumbo">Santa Maria Norte</h1>
+      <h1 class="w3-xxlarge">Vende-se galp&atilde;o 232m<sup>2</sup></h1>
+    </div>
+    <div class="w3-half w3-container w3-xlarge">
+      <p class="">Galp&atilde;o divido em 3 salas de aprox 70m<sup>2</sup></p>
+      <p class="">Ao lado da BR-040</p>
+      <p class="w3-xxlarge"><b>R$ 380.000,00</b></p>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+  <!-- Second Grid: Resent -->
+
+  <div class="w3-row">  
+    <div class="w3-container">
+      <img src="./thumbnails/vista_externa1.jpg" style="width:100%" onclick="window.open('./fotos/vista_externa1.jpg');return false;">
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/vista_externa2.jpg" style="width:100%" onclick="window.open('./fotos/vista_externa2.jpg');return false;">
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/vista_externa3.jpg" style="width:100%" onclick="window.open('./fotos/vista_externa3.jpg');return false;">
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="w3-row">  
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala1_1.jpg" style="width:100%" onclick="window.open('./fotos/sala1_1.jpg');return false;">
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala1_2.jpg" style="width:100%" onclick="window.open('./fotos/sala1_2.jpg');return false;">
+    </div>
+    <div class="w3-container">
+      <p class="w3-xlarge w3-text-grey">
+        Varanda:</p>
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/varanda1.jpg" style="width:100%" onclick="window.open('./fotos/varanda1.jpg');return false;">
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/varanda4.jpg" style="width:100%" onclick="window.open('./fotos/varanda4.jpg');return false;">
+    </div>
+    </br>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/varanda2.jpg" style="width:100%" onclick="window.open('./fotos/varanda2.jpg');return false;">
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/varanda3.jpg" style="width:100%" onclick="window.open('./fotos/varanda3.jpg');return false;">
+    </div>    
+    <div class="w3-container">
+      <p class="w3-xlarge w3-text-grey">
+        Copa sala 1:</p>
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala1_copa1.jpg" style="width:100%" onclick="window.open('./fotos/sala1_copa1.jpg');return false;">
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala1_copa2.jpg" style="width:100%" onclick="window.open('./fotos/sala1_copa2.jpg');return false;">
+    </div>
+    <div class="w3-container">
+      <p class="w3-xlarge w3-text-grey">
+        Banheiro sala 1:</p>
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala1_banheiro1.jpg" style="width:100%" onclick="window.open('./fotos/sala1_banheiro1.jpg');return false;">
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala1_banheiro2.jpg" style="width:100%" onclick="window.open('./fotos/sala1_banheiro2.jpg');return false;">
+    </div>
+  </div>
+
+  </br>
+  </br>
+  </br>
+
+  <div class="w3-row">
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala2_1.jpg" style="width:100%" onclick="window.open('./fotos/sala2_1.jpg');return false;">
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala2_2.jpg" style="width:100%" onclick="window.open('./fotos/sala2_2.jpg');return false;">
+    </div>
+  </div>
+  </br>
+  <div class="w3-row">
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala2_3.jpg" style="width:100%" onclick="window.open('./fotos/sala2_3.jpg');return false;">
+    </div>
+  </div>
+
+  </br>
+  </br>
+  </br>
+
+  <div class="w3-row">
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala3_1.jpg" style="width:100%" onclick="window.open('./fotos/sala3_1.jpg');return false;">
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala3_2.jpg" style="width:100%" onclick="window.open('./fotos/sala3_2.jpg');return false;">
+    </div>
+  </div>
+  </br>
+  <div class="w3-row">
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala3_3.jpg" style="width:100%" onclick="window.open('./fotos/sala3_3.jpg');return false;">
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala3_4.jpg" style="width:100%" onclick="window.open('./fotos/sala3_4.jpg');return false;">
+    </div>
+  </div>
+  <div class="w3-container">
+    <p class="w3-xlarge w3-text-grey">
+      Banheiro sala 3:</p>
+  </div>
+  <div class="w3-row">
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala3_banheiro1.jpg" style="width:100%" onclick="window.open('./fotos/sala3_banheiro1.jpg');return false;">
+    </div>
+    <div class="w3-half w3-container">
+      <img src="./thumbnails/sala3_banheiro2.jpg" style="width:100%" onclick="window.open('./fotos/sala3_banheiro2.jpg');return false;">
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+
+
+  <div class="w3-panel">
+    <h2><b>Localiza&ccedil;&atilde;o:</b></h2>
+  </div>
+
+  <div class="w3-row">
+    <div class="w3-half w3-container" style="text-align: center;">
+      
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <h2 style="background-color:lightgoldenrodyellow" onclick="window.open('https://maps.app.goo.gl/gKse1K6fhzzCGU2f8');return false;">AC319 ADESM CJ C, 1, 72549-365</h2>
+
+    </div>
+    <div class="w3-half w3-container" >
+      <div>
+        <img src="./thumbnails/mapa_galpao.png"  onclick="window.open('https://maps.app.goo.gl/gKse1K6fhzzCGU2f8');return false;">
+        <h4>clique na foto acima para ver localiza&ccedil;&atilde;o no Google maps</h4>
+      </div>  
+    </div>
+  </div>    
+
+
+  <br />
+  <br />
+
+  <div class="w3-panel">
+    <h2><b>Contato:</b></h2>
+  </div>
+
+<div class="w3-row">
+  <div class="w3-container" style="text-align: center;">
+    <a href="https://api.whatsapp.com/send?phone=5561982283804&text=Estou%20interessado%20em%20visitar%20o%20galpao%20situado%20na%20AC319,%20Santa%20Maria"
+       target="_blank"
+       rel="noopener noreferrer"
+       onclick="gtag('event', 'click_whatsapp', {
+         'event_category': 'Contato',
+         'event_label': 'Botao WhatsApp Principal'
+       });">
+      <img src="./thumbnails/whatsapp.png" style="vertical-align: middle;" alt="WhatsApp">
+      <h2 style="display: inline-block; vertical-align: middle;"><b>&nbsp;&nbsp;Falar no WhatsApp</b></h2>
+    </a>
+  </div>
+</div>
+  <br />
+  <br />
+  <br />
+  <br />
+
+</body>
+
+</html>
