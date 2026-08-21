@@ -11,6 +11,27 @@
 
     gtag('config', 'AW-18399800557');
     gtag('config', 'G-FMMYR5YS5D');
+
+    // Snippet de conversão oficial do Google Ads
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18399800557/LipRCMfkwOQcE03Z2sVE',
+      'value': 1.0,
+      'currency': 'BRL'
+    });
+  </script>
+
+  <script>
+    function registrarConversaoWhatsapp(posicao) {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18399800557/LipRCMfkwOQcE03Z2sVE',
+        'value': 1.0,
+        'currency': 'BRL'
+      });
+      gtag('event', 'click_whatsapp', {
+        'event_category': 'Contato',
+        'event_label': posicao
+      });
+    }
   </script>
 
   <meta charset="UTF-8">
@@ -361,7 +382,7 @@
       .btn-whatsapp {
         width: 100%;
         box-sizing: border-box;
-        padding: 14px 8px; /* Padding reduzido para liberar 16px */
+        padding: 14px 8px;
       }
 
       .zap-texto {
@@ -448,10 +469,7 @@
 
       <div class="bloco-contato">
         <a href="https://api.whatsapp.com/send?phone=5561982283804&text=Estou%20interessado%20em%20visitar%20o%20galpao%20situado%20na%20AC319,%20Santa%20Maria"
-          target="_blank" rel="noopener noreferrer" class="btn-whatsapp" onclick="gtag('event', 'click_whatsapp', {
-            'event_category': 'Contato',
-            'event_label': 'Botao WhatsApp Topo'
-          });">
+          target="_blank" rel="noopener noreferrer" class="btn-whatsapp" onclick="registrarConversaoWhatsapp('Botao WhatsApp Topo');">
           <img src="./thumbnails/whatsapp.png" alt="WhatsApp" class="icone-zap">
           <span class="zap-texto">Conversar no WhatsApp:<wbr> <b>(61)&nbsp;98228-3804</b></span>
         </a>
@@ -666,10 +684,7 @@
 
       <div class="bloco-contato">
         <a href="https://api.whatsapp.com/send?phone=5561982283804&text=Estou%20interessado%20em%20visitar%20o%20galpao%20situado%20na%20AC319,%20Santa%20Maria"
-          target="_blank" rel="noopener noreferrer" class="btn-whatsapp" onclick="gtag('event', 'click_whatsapp', {
-            'event_category': 'Contato',
-            'event_label': 'Botao WhatsApp Rodape'
-          });">
+          target="_blank" rel="noopener noreferrer" class="btn-whatsapp" onclick="registrarConversaoWhatsapp('Botao WhatsApp Rodape');">
           <img src="./thumbnails/whatsapp.png" alt="WhatsApp" class="icone-zap">
           <span class="zap-texto">Conversar no WhatsApp:<wbr> <b>(61)&nbsp;98228-3804</b></span>
         </a>
