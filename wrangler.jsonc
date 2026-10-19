@@ -2,6 +2,12 @@
   "name": "site-galpao",
   "compatibility_date": "2026-10-19",
   "assets": {
-    "directory": "./"
+    "directory": "./",
+    "exclude": [
+      ".git/**",
+      ".github/**",
+      "wrangler.jsonc",
+      "*.bak"
+    ]
   }
 }
