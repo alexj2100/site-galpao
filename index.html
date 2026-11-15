@@ -1,3 +1,28 @@
+Quando você usa `window.open('./fotos/imagem.jpg')`, o navegador abre o arquivo de imagem puro usando o visualizador interno dele — onde **não é possível aplicar CSS nem JavaScript** (e o Chrome não estica imagens que tenham resolução menor que a tela, deixando aquelas bordas escuras em volta).
+
+Para resolver isso em **Chrome (Android, Windows, Linux)** e **Safari (iPhone e Mac)**, a solução ideal é substituir a abertura em nova guia por um **visualizador em tela cheia (Lightbox)** feito em CSS e JavaScript puro dentro da própria página.
+
+### O que foi implementado no código abaixo:
+
+* **100% da área visível:** Ao clicar em qualquer foto (ou na planta), ela abre ocupando toda a altura/largura útil da tela (`100vw` × `100dvh`), sem cortes.
+* **Zoom intuitivo no computador (Windows/Linux/Mac):**
+* **Roda do mouse (scroll):** aumenta e diminui o zoom suavemente direcionado para onde o cursor está apontando.
+* **Clique / Duplo clique:** alterna entre o tamanho ajustado à tela (`100%`) e ampliação (`250%`).
+* **Arrastar com o mouse:** permite movimentar a foto livremente quando estiver com zoom.
+* **Teclado:** `Esc` fecha, `+` / `-` controlam o zoom e as setas `←` / `→` navegam entre as fotos.
+
+
+* **Zoom intuitivo no celular (Chrome Android e Safari iOS):**
+* **Pinça com dois dedos:** amplia e reduz de forma fluida.
+* **Arrastar com um dedo:** movimenta a imagem ampliada.
+* **Toque duplo:** amplia ou retorna ao tamanho original.
+
+
+* **Barra de controles flutuante:** Botões dedicados de **Zoom Out (`−`)**, **Reset (`100%`)**, **Zoom In (`+`)**, setas para passar para a próxima foto e botão **Fechar (`✕`)**. *(A imagem do mapa continua abrindo o Google Maps normalmente).*
+
+### Código HTML completo atualizado:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -231,7 +256,6 @@
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
-      /* Mantém a proporção de 16:9 */
       height: 0;
       overflow: hidden;
       width: 100%;
@@ -365,6 +389,173 @@
       padding-top: 16px;
     }
 
+    /* ================= LIGHTBOX FULLSCREEN COM ZOOM ================= */
+    .lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      background-color: rgba(10, 10, 10, 0.97);
+      z-index: 99999;
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+    }
+
+    .lb-overlay.ativo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lb-palco {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .lb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform-origin: center center;
+      cursor: zoom-in;
+      will-change: transform;
+      -webkit-user-drag: none;
+    }
+
+    .lb-topo-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+      z-index: 100001;
+      pointer-events: none;
+    }
+
+    .lb-info {
+      color: #f3f4f6;
+      font-size: 1rem;
+      font-weight: 600;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+    .lb-btn-fechar {
+      pointer-events: auto;
+      background: rgba(30, 30, 30, 0.85);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .lb-btn-fechar:hover {
+      background: #dc2626;
+      border-color: #dc2626;
+      transform: scale(1.05);
+    }
+
+    .lb-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(25, 25, 25, 0.75);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100001;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .lb-nav:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .lb-prev {
+      left: 16px;
+    }
+
+    .lb-next {
+      right: 16px;
+    }
+
+    .lb-controles-zoom {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(25, 25, 25, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 6px 14px;
+      border-radius: 50px;
+      z-index: 100001;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .lb-zoom-btn {
+      background: transparent;
+      color: #ffffff;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease;
+    }
+
+    .lb-zoom-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .lb-zoom-nivel {
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      min-width: 56px;
+      text-align: center;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 20px;
+    }
+
+    .lb-zoom-nivel:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
     /* ================= RESPONSIVO MOBILE ================= */
     @media (max-width: 768px) {
       body {
@@ -467,6 +658,24 @@
       .rodape-local {
         font-size: 1.15rem;
       }
+
+      .lb-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+      }
+
+      .lb-prev {
+        left: 8px;
+      }
+
+      .lb-next {
+        right: 8px;
+      }
+
+      .lb-info {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -523,8 +732,8 @@
         <div class="separador-amarelo">Planta do imóvel</div>
         <div class="grade-fotos">
           <div class="grade-foto-destaque">
-            <img src="./thumbnails/planta_lores.jpg" alt="Planta do Imóvel" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/planta_hires.jpg');">
+            <img src="./thumbnails/planta_lores.jpg" data-full="./fotos/planta_hires.jpg" alt="Planta do Imóvel"
+              class="galeria-img" loading="lazy">
           </div>
         </div>
       </section>
@@ -604,8 +813,8 @@
         <div class="separador-amarelo">Planta do imóvel</div>
         <div class="grade-fotos">
           <div class="grade-foto-destaque">
-            <img src="./thumbnails/planta_lores.jpg" alt="Planta do Imóvel" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/planta_hires.jpg');">
+            <img src="./thumbnails/planta_lores.jpg" data-full="./fotos/planta_hires.jpg" alt="Planta do Imóvel"
+              class="galeria-img" loading="lazy">
           </div>
         </div>
       </section>
@@ -615,12 +824,12 @@
         <div class="separador-amarelo">Sala 1</div>
         <div class="grade-fotos">
           <div>
-            <img src="./thumbnails/sala1_1.jpg" alt="Sala 1 - Foto 1" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/sala1_1.jpg');">
+            <img src="./thumbnails/sala1_1.jpg" data-full="./fotos/sala1_1.jpg" alt="Sala 1 - Foto 1" class="galeria-img"
+              loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/sala1_2.jpg" alt="Sala 1 - Foto 2" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/sala1_2.jpg');">
+            <img src="./thumbnails/sala1_2.jpg" data-full="./fotos/sala1_2.jpg" alt="Sala 1 - Foto 2" class="galeria-img"
+              loading="lazy">
           </div>
         </div>
       </section>
@@ -630,20 +839,20 @@
         <div class="separador-amarelo">Varanda</div>
         <div class="grade-fotos">
           <div>
-            <img src="./thumbnails/varanda1.jpg" alt="Varanda 1" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/varanda1.jpg');">
+            <img src="./thumbnails/varanda1.jpg" data-full="./fotos/varanda1.jpg" alt="Varanda 1" class="galeria-img"
+              loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/varanda4.jpg" alt="Varanda 4" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/varanda4.jpg');">
+            <img src="./thumbnails/varanda4.jpg" data-full="./fotos/varanda4.jpg" alt="Varanda 4" class="galeria-img"
+              loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/varanda2.jpg" alt="Varanda 2" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/varanda2.jpg');">
+            <img src="./thumbnails/varanda2.jpg" data-full="./fotos/varanda2.jpg" alt="Varanda 2" class="galeria-img"
+              loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/varanda3.jpg" alt="Varanda 3" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/varanda3.jpg');">
+            <img src="./thumbnails/varanda3.jpg" data-full="./fotos/varanda3.jpg" alt="Varanda 3" class="galeria-img"
+              loading="lazy">
           </div>
         </div>
       </section>
@@ -653,12 +862,12 @@
         <div class="separador-amarelo">Copa sala 1</div>
         <div class="grade-fotos">
           <div>
-            <img src="./thumbnails/sala1_copa1.jpg" alt="Copa Sala 1 - Foto 1" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/sala1_copa1.jpg');">
+            <img src="./thumbnails/sala1_copa1.jpg" data-full="./fotos/sala1_copa1.jpg" alt="Copa Sala 1 - Foto 1"
+              class="galeria-img" loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/sala1_copa2.jpg" alt="Copa Sala 1 - Foto 2" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/sala1_copa2.jpg');">
+            <img src="./thumbnails/sala1_copa2.jpg" data-full="./fotos/sala1_copa2.jpg" alt="Copa Sala 1 - Foto 2"
+              class="galeria-img" loading="lazy">
           </div>
         </div>
       </section>
@@ -668,12 +877,12 @@
         <div class="separador-amarelo">Banheiro sala 1</div>
         <div class="grade-fotos">
           <div>
-            <img src="./thumbnails/sala1_banheiro1.jpg" alt="Banheiro Sala 1 - Foto 1" class="galeria-img"
-              loading="lazy" onclick="window.open('./fotos/sala1_banheiro1.jpg');">
+            <img src="./thumbnails/sala1_banheiro1.jpg" data-full="./fotos/sala1_banheiro1.jpg"
+              alt="Banheiro Sala 1 - Foto 1" class="galeria-img" loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/sala1_banheiro2.jpg" alt="Banheiro Sala 1 - Foto 2" class="galeria-img"
-              loading="lazy" onclick="window.open('./fotos/sala1_banheiro2.jpg');">
+            <img src="./thumbnails/sala1_banheiro2.jpg" data-full="./fotos/sala1_banheiro2.jpg"
+              alt="Banheiro Sala 1 - Foto 2" class="galeria-img" loading="lazy">
           </div>
         </div>
       </section>
@@ -683,16 +892,16 @@
         <div class="separador-amarelo">Sala 2</div>
         <div class="grade-fotos">
           <div>
-            <img src="./thumbnails/sala2_1.jpg" alt="Sala 2 - Foto 1" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/sala2_1.jpg');">
+            <img src="./thumbnails/sala2_1.jpg" data-full="./fotos/sala2_1.jpg" alt="Sala 2 - Foto 1" class="galeria-img"
+              loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/sala2_2.jpg" alt="Sala 2 - Foto 2" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/sala2_2.jpg');">
+            <img src="./thumbnails/sala2_2.jpg" data-full="./fotos/sala2_2.jpg" alt="Sala 2 - Foto 2" class="galeria-img"
+              loading="lazy">
           </div>
           <div class="grade-foto-destaque">
-            <img src="./thumbnails/sala2_3.jpg" alt="Sala 2 - Foto 3" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/sala2_3.jpg');">
+            <img src="./thumbnails/sala2_3.jpg" data-full="./fotos/sala2_3.jpg" alt="Sala 2 - Foto 3" class="galeria-img"
+              loading="lazy">
           </div>
         </div>
       </section>
@@ -702,20 +911,20 @@
         <div class="separador-amarelo">Sala 3</div>
         <div class="grade-fotos">
           <div>
-            <img src="./thumbnails/sala3_1.jpg" alt="Sala 3 - Foto 1" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/sala3_1.jpg');">
+            <img src="./thumbnails/sala3_1.jpg" data-full="./fotos/sala3_1.jpg" alt="Sala 3 - Foto 1" class="galeria-img"
+              loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/sala3_2.jpg" alt="Sala 3 - Foto 2" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/sala3_2.jpg');">
+            <img src="./thumbnails/sala3_2.jpg" data-full="./fotos/sala3_2.jpg" alt="Sala 3 - Foto 2" class="galeria-img"
+              loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/sala3_3.jpg" alt="Sala 3 - Foto 3" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/sala3_3.jpg');">
+            <img src="./thumbnails/sala3_3.jpg" data-full="./fotos/sala3_3.jpg" alt="Sala 3 - Foto 3" class="galeria-img"
+              loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/sala3_4.jpg" alt="Sala 3 - Foto 4" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/sala3_4.jpg');">
+            <img src="./thumbnails/sala3_4.jpg" data-full="./fotos/sala3_4.jpg" alt="Sala 3 - Foto 4" class="galeria-img"
+              loading="lazy">
           </div>
         </div>
       </section>
@@ -725,12 +934,12 @@
         <div class="separador-amarelo">Banheiro sala 3</div>
         <div class="grade-fotos">
           <div>
-            <img src="./thumbnails/sala3_banheiro1.jpg" alt="Banheiro Sala 3 - Foto 1" class="galeria-img"
-              loading="lazy" onclick="window.open('./fotos/sala3_banheiro1.jpg');">
+            <img src="./thumbnails/sala3_banheiro1.jpg" data-full="./fotos/sala3_banheiro1.jpg"
+              alt="Banheiro Sala 3 - Foto 1" class="galeria-img" loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/sala3_banheiro2.jpg" alt="Banheiro Sala 3 - Foto 2" class="galeria-img"
-              loading="lazy" onclick="window.open('./fotos/sala3_banheiro2.jpg');">
+            <img src="./thumbnails/sala3_banheiro2.jpg" data-full="./fotos/sala3_banheiro2.jpg"
+              alt="Banheiro Sala 3 - Foto 2" class="galeria-img" loading="lazy">
           </div>
         </div>
       </section>
@@ -740,16 +949,16 @@
         <div class="separador-amarelo">Vista externa</div>
         <div class="grade-fotos">
           <div class="grade-foto-destaque">
-            <img src="./thumbnails/vista_externa1.jpg" alt="Vista Externa Principal" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/vista_externa1.jpg');">
+            <img src="./thumbnails/vista_externa1.jpg" data-full="./fotos/vista_externa1.jpg"
+              alt="Vista Externa Principal" class="galeria-img" loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/vista_externa2.jpg" alt="Vista Externa 2" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/vista_externa2.jpg');">
+            <img src="./thumbnails/vista_externa2.jpg" data-full="./fotos/vista_externa2.jpg" alt="Vista Externa 2"
+              class="galeria-img" loading="lazy">
           </div>
           <div>
-            <img src="./thumbnails/vista_externa3.jpg" alt="Vista Externa 3" class="galeria-img" loading="lazy"
-              onclick="window.open('./fotos/vista_externa3.jpg');">
+            <img src="./thumbnails/vista_externa3.jpg" data-full="./fotos/vista_externa3.jpg" alt="Vista Externa 3"
+              class="galeria-img" loading="lazy">
           </div>
         </div>
       </section>
@@ -793,6 +1002,267 @@
 
       <p class="rodape-local">Santa Maria Norte — Ao lado da BR-040</p>
     </footer>
+
   </div>
+
+  <!-- MODAL LIGHTBOX EM TELA CHEIA -->
+  <div id="lightbox" class="lb-overlay" role="dialog" aria-modal="true" aria-label="Visualizador de imagens">
+    <div class="lb-topo-bar">
+      <span id="lb-info" class="lb-info">1 / 1</span>
+      <button type="button" id="lb-fechar" class="lb-btn-fechar" title="Fechar (Esc)">✕ Fechar</button>
+    </div>
+
+    <button type="button" id="lb-prev" class="lb-nav lb-prev" title="Foto anterior (←)">‹</button>
+    <button type="button" id="lb-next" class="lb-nav lb-next" title="Próxima foto (→)">›</button>
+
+    <div id="lb-palco" class="lb-palco">
+      <img id="lb-img" class="lb-img" src="" alt="">
+    </div>
+
+    <div class="lb-controles-zoom">
+      <button type="button" id="lb-zoom-out" class="lb-zoom-btn" title="Diminuir zoom (-)">−</button>
+      <span id="lb-zoom-nivel" class="lb-zoom-nivel" title="Clique para restaurar 100%">100%</span>
+      <button type="button" id="lb-zoom-in" class="lb-zoom-btn" title="Aumentar zoom (+)">+</button>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const lightbox = document.getElementById('lightbox');
+      const lbPalco = document.getElementById('lb-palco');
+      const lbImg = document.getElementById('lb-img');
+      const lbInfo = document.getElementById('lb-info');
+      const lbZoomNivel = document.getElementById('lb-zoom-nivel');
+      const btnFechar = document.getElementById('lb-fechar');
+      const btnPrev = document.getElementById('lb-prev');
+      const btnNext = document.getElementById('lb-next');
+      const btnZoomIn = document.getElementById('lb-zoom-in');
+      const btnZoomOut = document.getElementById('lb-zoom-out');
+
+      const fotos = Array.from(document.querySelectorAll('img[data-full]'));
+      let indiceAtual = 0;
+
+      // Estado de zoom e movimentação
+      let scale = 1;
+      let translateX = 0;
+      let translateY = 0;
+      const MIN_SCALE = 1;
+      const MAX_SCALE = 5;
+
+      // Controle de arraste (Desktop e Touch)
+      let isDragging = false;
+      let hasMoved = false;
+      let startX = 0;
+      let startY = 0;
+      let initialPinchDist = 0;
+      let initialPinchScale = 1;
+      let lastTapTime = 0;
+
+      function atualizarTransform(comTransicao = false) {
+        if (scale <= 1) {
+          scale = 1;
+          translateX = 0;
+          translateY = 0;
+          lbImg.style.cursor = 'zoom-in';
+        } else {
+          lbImg.style.cursor = isDragging ? 'grabbing' : 'grab';
+        }
+
+        lbImg.style.transition = comTransicao ? 'transform 0.2s ease-out' : 'none';
+        lbImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        lbZoomNivel.textContent = `${Math.round(scale * 100)}%`;
+      }
+
+      function aplicarZoomNoPonto(novoScale, clientX, clientY, comTransicao = false) {
+        const oldScale = scale;
+        scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, novoScale));
+
+        if (scale === 1) {
+          translateX = 0;
+          translateY = 0;
+        } else {
+          const cx = window.innerWidth / 2;
+          const cy = window.innerHeight / 2;
+          const dx = clientX - cx;
+          const dy = clientY - cy;
+
+          translateX = dx - ((dx - translateX) / oldScale) * scale;
+          translateY = dy - ((dy - translateY) / oldScale) * scale;
+        }
+
+        atualizarTransform(comTransicao);
+      }
+
+      function abrirFoto(indice) {
+        indiceAtual = (indice + fotos.length) % fotos.length;
+        const fotoEl = fotos[indiceAtual];
+        lbImg.src = fotoEl.getAttribute('data-full');
+        lbImg.alt = fotoEl.alt || '';
+        lbInfo.textContent = `${indiceAtual + 1} / ${fotos.length}${fotoEl.alt ? ' — ' + fotoEl.alt : ''}`;
+
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        atualizarTransform(false);
+
+        lightbox.classList.add('ativo');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function fecharLightbox() {
+        lightbox.classList.remove('ativo');
+        document.body.style.overflow = '';
+        lbImg.src = '';
+      }
+
+      // Associar clique nas miniaturas
+      fotos.forEach((img, idx) => {
+        img.addEventListener('click', () => abrirFoto(idx));
+      });
+
+      // Botões de navegação e controles
+      btnFechar.addEventListener('click', fecharLightbox);
+      btnPrev.addEventListener('click', () => abrirFoto(indiceAtual - 1));
+      btnNext.addEventListener('click', () => abrirFoto(indiceAtual + 1));
+
+      btnZoomIn.addEventListener('click', () => {
+        aplicarZoomNoPonto(scale * 1.4, window.innerWidth / 2, window.innerHeight / 2, true);
+      });
+
+      btnZoomOut.addEventListener('click', () => {
+        aplicarZoomNoPonto(scale / 1.4, window.innerWidth / 2, window.innerHeight / 2, true);
+      });
+
+      lbZoomNivel.addEventListener('click', () => {
+        scale = 1;
+        atualizarTransform(true);
+      });
+
+      // Zoom suave com a roda do mouse
+      lightbox.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const fator = e.deltaY < 0 ? 1.18 : 0.85;
+        aplicarZoomNoPonto(scale * fator, e.clientX, e.clientY, false);
+      }, { passive: false });
+
+      // Mouse: arrastar para mover ou clicar para dar zoom
+      lbPalco.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return;
+        isDragging = true;
+        hasMoved = false;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+        if (scale > 1) lbImg.style.cursor = 'grabbing';
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const novoX = e.clientX - startX;
+        const novoY = e.clientY - startY;
+        if (Math.abs(novoX - translateX) > 4 || Math.abs(novoY - translateY) > 4) {
+          hasMoved = true;
+        }
+        if (scale > 1) {
+          translateX = novoX;
+          translateY = novoY;
+          atualizarTransform(false);
+        }
+      });
+
+      window.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+
+        if (!hasMoved && e.target === lbImg) {
+          // Clique simples sem arrastar: alterna zoom no ponto clicado
+          if (scale === 1) {
+            aplicarZoomNoPonto(2.5, e.clientX, e.clientY, true);
+          } else {
+            scale = 1;
+            atualizarTransform(true);
+          }
+        } else {
+          atualizarTransform(false);
+        }
+      });
+
+      // Touch (Android Chrome & Safari iOS): pinça com 2 dedos, arraste e toque duplo
+      lbPalco.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          const agora = Date.now();
+          if (agora - lastTapTime < 300) {
+            // Toque duplo
+            e.preventDefault();
+            const t = e.touches[0];
+            if (scale === 1) {
+              aplicarZoomNoPonto(2.5, t.clientX, t.clientY, true);
+            } else {
+              scale = 1;
+              atualizarTransform(true);
+            }
+            lastTapTime = 0;
+            return;
+          }
+          lastTapTime = agora;
+
+          isDragging = true;
+          startX = e.touches[0].clientX - translateX;
+          startY = e.touches[0].clientY - translateY;
+        } else if (e.touches.length === 2) {
+          isDragging = false;
+          const t1 = e.touches[0];
+          const t2 = e.touches[1];
+          initialPinchDist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+          initialPinchScale = scale;
+        }
+      }, { passive: false });
+
+      lbPalco.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        if (e.touches.length === 1 && isDragging && scale > 1) {
+          translateX = e.touches[0].clientX - startX;
+          translateY = e.touches[0].clientY - startY;
+          atualizarTransform(false);
+        } else if (e.touches.length === 2) {
+          const t1 = e.touches[0];
+          const t2 = e.touches[1];
+          const distAtual = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+          const centroX = (t1.clientX + t2.clientX) / 2;
+          const centroY = (t1.clientY + t2.clientY) / 2;
+
+          if (initialPinchDist > 0) {
+            const novoScale = initialPinchScale * (distAtual / initialPinchDist);
+            aplicarZoomNoPonto(novoScale, centroX, centroY, false);
+          }
+        }
+      }, { passive: false });
+
+      lbPalco.addEventListener('touchend', () => {
+        isDragging = false;
+        if (scale < 1.05) {
+          scale = 1;
+          atualizarTransform(true);
+        }
+      });
+
+      // Atalhos de teclado
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('ativo')) return;
+        if (e.key === 'Escape') fecharLightbox();
+        if (e.key === 'ArrowLeft') abrirFoto(indiceAtual - 1);
+        if (e.key === 'ArrowRight') abrirFoto(indiceAtual + 1);
+        if (e.key === '+' || e.key === '=') {
+          aplicarZoomNoPonto(scale * 1.3, window.innerWidth / 2, window.innerHeight / 2, true);
+        }
+        if (e.key === '-') {
+          aplicarZoomNoPonto(scale / 1.3, window.innerWidth / 2, window.innerHeight / 2, true);
+        }
+      });
+    })();
+  </script>
+
 </body>
+
 </html>
+
+```
