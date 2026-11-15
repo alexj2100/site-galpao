@@ -1,28 +1,3 @@
-Quando você usa `window.open('./fotos/imagem.jpg')`, o navegador abre o arquivo de imagem puro usando o visualizador interno dele — onde **não é possível aplicar CSS nem JavaScript** (e o Chrome não estica imagens que tenham resolução menor que a tela, deixando aquelas bordas escuras em volta).
-
-Para resolver isso em **Chrome (Android, Windows, Linux)** e **Safari (iPhone e Mac)**, a solução ideal é substituir a abertura em nova guia por um **visualizador em tela cheia (Lightbox)** feito em CSS e JavaScript puro dentro da própria página.
-
-### O que foi implementado no código abaixo:
-
-* **100% da área visível:** Ao clicar em qualquer foto (ou na planta), ela abre ocupando toda a altura/largura útil da tela (`100vw` × `100dvh`), sem cortes.
-* **Zoom intuitivo no computador (Windows/Linux/Mac):**
-* **Roda do mouse (scroll):** aumenta e diminui o zoom suavemente direcionado para onde o cursor está apontando.
-* **Clique / Duplo clique:** alterna entre o tamanho ajustado à tela (`100%`) e ampliação (`250%`).
-* **Arrastar com o mouse:** permite movimentar a foto livremente quando estiver com zoom.
-* **Teclado:** `Esc` fecha, `+` / `-` controlam o zoom e as setas `←` / `→` navegam entre as fotos.
-
-
-* **Zoom intuitivo no celular (Chrome Android e Safari iOS):**
-* **Pinça com dois dedos:** amplia e reduz de forma fluida.
-* **Arrastar com um dedo:** movimenta a imagem ampliada.
-* **Toque duplo:** amplia ou retorna ao tamanho original.
-
-
-* **Barra de controles flutuante:** Botões dedicados de **Zoom Out (`−`)**, **Reset (`100%`)**, **Zoom In (`+`)**, setas para passar para a próxima foto e botão **Fechar (`✕`)**. *(A imagem do mapa continua abrindo o Google Maps normalmente).*
-
-### Código HTML completo atualizado:
-
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -1264,5 +1239,3 @@ Para resolver isso em **Chrome (Android, Windows, Linux)** e **Safari (iPhone e 
 </body>
 
 </html>
-
-```
